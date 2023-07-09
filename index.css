@@ -1,4 +1,38 @@
-#root{
+/* #root{
     background-color: aqua;
+} */
+
+.logo{
+    width: 150px;
 }
 
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    border: 1px solid black;
+}
+.nav-items > ul{
+    display: flex;
+    list-style: none;
+}
+
+.nav-items > ul > li{
+    padding: 10px;
+}
+
+.card{
+    width: 200px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.card > img {
+    width: 100%;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+}
