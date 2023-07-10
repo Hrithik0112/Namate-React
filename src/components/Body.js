@@ -7,17 +7,16 @@ import { useState } from "react";
 const Body = () => {
 
 
-    function filterData(searchInput , restaurents){
-        
-       const filterData = restaurents.filter((restaurant) =>
-       restaurant.data.name.includes(searchInput)
+    function filterData(searchInput, restaurants) {
+        const filterData = restaurants.filter((restaurant) =>
+          restaurant.data.name.includes(searchInput)
         );
+      
         return filterData;
-        
-    };
+      }
 
-    const [searchInput, setSearchInput] = useState();
-    const [restaurents, setRestaurents] = useState(restaurantList);
+    const [searchInput, setSearchInput] = useState("");
+    const [restaurants, setRestaurants] = useState(restaurantList);
     return (
         <>
             <div className="search-container">
@@ -31,14 +30,14 @@ const Body = () => {
                 />
                 <button className="search-btn" 
                 onClick={() => {
-                    const data = filterData(searchInput , restaurents);
-                    setRestaurents(data);
+                    const data = filterData(searchInput , restaurants);
+                    setRestaurants(data);
                     console.log(data);
                 }}
                 >Search</button>
             </div>
             <div className="list">
-                {restaurantList.map((restaurant) => {
+                {restaurants.map((restaurant) => {
                 return <RestaurantCard  {...restaurant.data} key={restaurant.data.id}/>
              })}
             
