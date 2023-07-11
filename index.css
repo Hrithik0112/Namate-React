@@ -36,3 +36,33 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.restaureant-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card{
+    width: 200px;
+    height: 200px;
+    background-color: gainsboro;
+    margin: 20px;
+}
+.menu{
+    display: flex;
+}
+
+.menu-list{
+    
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-title{
+    padding: 15px;
+    margin-left: 15px;
+    border: 1px solid black;
+}
+

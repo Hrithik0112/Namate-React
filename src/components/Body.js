@@ -1,8 +1,9 @@
 import RestaurantCard from "./RestaurantCard";
 
-import { restaurantList } from "../constants";
+import { SWIGGY_RESTAURANT_URL, restaurantList } from "../constants";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 
 const Body = () => {
@@ -25,8 +26,7 @@ const Body = () => {
     }, []);
     
     async function getRestaurants(){
-        const data = await fetch (
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572645&lng=88.363892&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch (SWIGGY_RESTAURANT_URL);
         const json = await data.json();
         // console.log(json); 
         setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);   
@@ -38,9 +38,9 @@ const Body = () => {
         return null;
     }
 
-    if(fillteredRestaurants.length === 0){
-        return <h1>Sorry . Not Found</h1>
-    }
+    // if(fillteredRestaurants.length === 0){
+    //     return <h1>Sorry . Not Found</h1>
+    // }
     // conditional rendering 
     // shimmer ui effect while there is no data
 
@@ -66,7 +66,12 @@ const Body = () => {
             </div>
             <div className="list">
                 {fillteredRestaurants.map((restaurant) => {
-                return <RestaurantCard  {...restaurant.data} key={restaurant.data.id}/>
+                return (
+                    <Link to={"/restaurant/" + restaurant.data.id} 
+                    key={restaurant.data.id}>
+                    <RestaurantCard  {...restaurant.data} />
+                    </Link>
+                );
              })}
             
             </div>
