@@ -7,7 +7,7 @@ const Title = () => (
 
     <a href="/">
         <img
-            className="logo"
+            className="w-32 ml-10"
             alt="logo"
             src="https://orkfriend.com/wp-content/uploads/2023/03/Zwigato-Movie-Logo-PNG-794x420.png"
         />
@@ -19,15 +19,15 @@ const Header = () => {
 
     const isOnline = useOnline();
     return (
-        <div className="header">
+        <div className="flex justify-between bg-orange-950 shadow-lg">
             <Title/>
-            <div className="nav-items">
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li> <Link to="/about">about</Link> </li>
-                <li><Link to="/contact">Contact</Link></li>
-                <li>cart</li>
-                <li><Link to="/instamart">Instamart</Link></li>
+            <div className="flex">
+            <ul className="flex py-8 font-bold text-white">
+                <li className="px-2"><Link to="/">Home</Link></li>
+                <li className="px-2"> <Link to="/about">about</Link> </li>
+                <li className="px-2"><Link to="/contact">Contact</Link></li>
+                <li className="px-2">cart</li>
+                <li className="px-2"><Link to="/instamart">Instamart</Link></li>
             </ul>
             <h1>{isOnline ? "✅" : "🔴"}</h1>
             </div>

@@ -10,7 +10,7 @@ export const SWIGGY_RESTAURANT_URL =
 
 // if any problem add "https://corsproxy.io/?"
 export const SWIGGY_MENU_URL =
-"https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.572645&lng=88.363892&&submitAction=ENTER&restaurantId=";
+"https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=22.572645&lng=88.363892&&submitAction=ENTER&restaurantId=";
 
 export const restaurantList =  [
     {

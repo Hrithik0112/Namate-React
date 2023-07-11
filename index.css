@@ -1,69 +1,8 @@
-/* #root{
-    background-color: aqua;
-} */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.logo{
-    width: 150px;
-}
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    margin: 10px;
-    border: 1px solid black;
-}
-.nav-items > ul{
-    display: flex;
-    list-style: none;
-}
 
-.nav-items > ul > li{
-    padding: 10px;
-}
 
-.card{
-    width: 200px;
-    border: 1px solid black;
-    padding: 10px;
-    margin: 10px;
-}
-
-.card > img {
-    width: 100%;
-}
-
-.list{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.restaureant-list{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.shimmer-card{
-    width: 200px;
-    height: 200px;
-    background-color: gainsboro;
-    margin: 20px;
-    
-}
-.menu{
-    display: flex;
-}
-
-.menu-list{
-    
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.menu-title{
-    padding: 15px;
-    margin-left: 15px;
-    border: 1px solid black;
-}
 

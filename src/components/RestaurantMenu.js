@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ITEM_IMG_CDN_URL, SWIGGY_MENU_URL, RESTAURANT_TYPE_KEY } from "../constants";
+import { ITEM_IMG_CDN_URL, SWIGGY_MENU_URL, RESTAURANT_TYPE_KEY, IMG_CDN_URL } from "../constants";
 import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
 
@@ -29,22 +29,24 @@ const RestaurantMenu = () => {
     return !restaurant ? (
         <Shimmer/>
     ) : (
-        <div className="menu">
-            <div className="res-details">
+        <div className="">
+            <div className="flex">
                 <h1>Restraunt id: {resId}</h1>
                 <h2>{name}</h2>
-                <img src={ITEM_IMG_CDN_URL + cloudinaryImageId} />
-                <h4>{areaName}</h4>
-                <h3>{city}</h3>
-                <h3>{avgRating} stars</h3>
-                <h3>{costForTwoMessage}</h3>
+                <img className="w-96  h-72 border  border-black p-3  m-3 rounded-md " src={IMG_CDN_URL + cloudinaryImageId} />
+                    <div className="flex flex-col p-4 m-4">
+                        <h4 className="font-semibold text-3xl text-orange-500">{areaName}</h4>
+                        <h3 className="font-semibold text-xl mt-3">City : {city}</h3>
+                        <h3 className="font-semibold text-xl mt-3">Rating :{avgRating} stars</h3>
+                        <h3 className="mt-3 italic font-semibold">{costForTwoMessage}</h3>
+                    </div>
             </div>
             
             <div >
-                <h2 className="menu-title">Menu</h2>
+                <h2 className="font-bold text-5xl bg-red-500 text-white inline-block p-2 m-3 ">Menu</h2>
                 <ul className="menu-list">
                     {itemCards && itemCards.map((item) => (
-                    <li key={item.card.info.id}>
+                    <li className="font-bold" key={item.card.info.id}>
                     {item.card.info.name} -{" Rs."}
                      {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
                     </li>
