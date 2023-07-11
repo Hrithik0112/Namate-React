@@ -1,5 +1,5 @@
 import { directive } from "@babel/types";
-import React, { Children } from "react";
+import React, { Children, lazy, Suspense } from "react";
 import ReactDOM, {createRoot} from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,6 +9,8 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Conatct";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Shimmer from "./components/Shimmer";
+// import Instamart from "./components/Instamart";
 
 /* 
     header
@@ -28,7 +30,9 @@ import RestaurantMenu from "./components/RestaurantMenu";
       - Copyright 
 
 */
-            
+
+    //we are doing a lazy import here    
+    const Instamart = lazy(() => import("./components/Instamart"))
 
 const Applayout = () => {
     return (
@@ -62,6 +66,13 @@ const appRouter = createBrowserRouter([
             {
                 path : "/restaurant/:resId",
                 element : <RestaurantMenu/>
+            },
+            {
+                path : "/instamart",
+                element : 
+                <Suspense fallback={<Shimmer/>}>
+                    <Instamart/>
+                </Suspense>
             }
         ]
     }

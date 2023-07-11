@@ -4,24 +4,19 @@ import { SWIGGY_RESTAURANT_URL, restaurantList } from "../constants";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
 
 
 const Body = () => {
 
 
-    function filterData(searchInput, restaurants) {
-        const filterData = restaurants.filter((restaurant) =>
-          restaurant.data.name?.toLowerCase()?.includes(searchInput.toLowerCase())
-        );
-      
-        return filterData;
-      }
-
     const [searchInput, setSearchInput] = useState("");
     const [fillteredRestaurants, setFillteredRestaurants] = useState([]);
     const [allRestaurants, setAllRestaurants] = useState([]);
-
+    
     useEffect(() => {
+
+
         getRestaurants();
     }, []);
     
