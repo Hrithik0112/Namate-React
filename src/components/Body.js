@@ -1,10 +1,11 @@
 import RestaurantCard from "./RestaurantCard";
 
 import { SWIGGY_RESTAURANT_URL, restaurantList } from "../constants";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
+import UserContext from "../utils/UserContext";
 
 
 const Body = () => {
@@ -13,7 +14,7 @@ const Body = () => {
     const [searchInput, setSearchInput] = useState("");
     const [fillteredRestaurants, setFillteredRestaurants] = useState([]);
     const [allRestaurants, setAllRestaurants] = useState([]);
-    
+    const {profile , setProfile} = useContext(UserContext);
     useEffect(() => {
 
 
@@ -55,9 +56,13 @@ const Body = () => {
                 onClick={() => {
                     const data = filterData(searchInput , allRestaurants);
                     setFillteredRestaurants(data);
-                    console.log(data);
+                    // console.log(data);
                 }}
                 >Search</button>
+                <input value={profile.name} onChange={e =>
+                    setProfile({
+                        name :e.target.value})
+                }></input>
             </div>
             <div className="flex flex-wrap">
                 {fillteredRestaurants.map((restaurant) => {

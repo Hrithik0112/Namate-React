@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 
 
@@ -18,10 +20,13 @@ const Title = () => (
 const Header = () => {
 
     const isOnline = useOnline();
+
+    const {profile} = useContext(UserContext);
     return (
         <div className="flex justify-between bg-orange-950 shadow-lg">
             <Title/>
             <div className="flex">
+            {profile && <h1 className="font-bold text-white">{profile.name}</h1>}
             <ul className="flex py-8 font-bold text-white">
                 <li className="px-2"><Link to="/">Home</Link></li>
                 <li className="px-2"> <Link to="/about">about</Link> </li>
@@ -30,6 +35,7 @@ const Header = () => {
                 <li className="px-2"><Link to="/instamart">Instamart</Link></li>
             </ul>
             <h1>{isOnline ? "✅" : "🔴"}</h1>
+            
             </div>
         </div>
     )

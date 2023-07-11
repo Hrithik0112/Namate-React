@@ -1,5 +1,5 @@
 import { directive } from "@babel/types";
-import React, { Children, lazy, Suspense } from "react";
+import React, { Children, lazy, Suspense, useState } from "react";
 import ReactDOM, {createRoot} from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -10,6 +10,7 @@ import Error from "./components/Error";
 import Contact from "./components/Conatct";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 // import Instamart from "./components/Instamart";
 
 /* 
@@ -35,11 +36,23 @@ import Shimmer from "./components/Shimmer";
     const Instamart = lazy(() => import("./components/Instamart"))
 
 const Applayout = () => {
+
+    const [profile , setProfile] = useState({
+        name: "Hrithik Dutta",
+        Email : "support@gamil.com",
+    })
     return (
         <React.Fragment>
+        <UserContext.Provider value={{
+            profile : profile,
+            setProfile :setProfile
+        }}>
+
         <Header/>
         <Outlet/>
         <Footer/>
+        </UserContext.Provider>
+
 
         </React.Fragment>
     )
