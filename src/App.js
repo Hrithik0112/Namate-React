@@ -11,6 +11,9 @@ import Contact from "./components/Conatct";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 // import Instamart from "./components/Instamart";
 
 /* 
@@ -42,19 +45,19 @@ const Applayout = () => {
         Email : "support@gamil.com",
     })
     return (
-        <React.Fragment>
-        <UserContext.Provider value={{
-            profile : profile,
-            setProfile :setProfile
-        }}>
+        <Provider store={store}>
+            <UserContext.Provider value={{
+                profile : profile,
+                setProfile :setProfile
+            }}>
 
-        <Header/>
-        <Outlet/>
-        <Footer/>
-        </UserContext.Provider>
+                <Header/>
+                <Outlet/>
+                <Footer/>
+            </UserContext.Provider>
 
 
-        </React.Fragment>
+        </Provider>
     )
 }
 
@@ -86,6 +89,10 @@ const appRouter = createBrowserRouter([
                 <Suspense fallback={<Shimmer/>}>
                     <Instamart/>
                 </Suspense>
+            },
+            {
+                path :"/cart",
+                element : <Cart/>
             }
         ]
     }

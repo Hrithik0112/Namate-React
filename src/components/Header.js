@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import { useContext } from "react";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+import store from "../utils/store";
 
 
 
@@ -22,6 +24,11 @@ const Header = () => {
     const isOnline = useOnline();
 
     const {profile} = useContext(UserContext);
+
+    const cartItems = useSelector(store => store.cart.items);
+    // console.log(cartItems);
+
+
     return (
         <div className="flex justify-between bg-orange-950 shadow-lg">
             <Title/>
@@ -31,8 +38,8 @@ const Header = () => {
                 <li className="px-2"><Link to="/">Home</Link></li>
                 <li className="px-2"> <Link to="/about">about</Link> </li>
                 <li className="px-2"><Link to="/contact">Contact</Link></li>
-                <li className="px-2">cart</li>
                 <li className="px-2"><Link to="/instamart">Instamart</Link></li>
+                <li className="px-2"><Link to="/cart">cart -{cartItems.length}-items</Link></li>
             </ul>
             <h1>{isOnline ? "✅" : "🔴"}</h1>
             

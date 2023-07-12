@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { ITEM_IMG_CDN_URL, SWIGGY_MENU_URL, RESTAURANT_TYPE_KEY, IMG_CDN_URL } from "../constants";
 import Shimmer from "./Shimmer";
 import useRestaurant from "../utils/useRestaurant";
+import { useDispatch } from "react-redux";
+import { additem, clearcart, removeitem } from "../utils/cartSlice";
 
 const RestaurantMenu = () => {
 
@@ -26,6 +28,16 @@ const RestaurantMenu = () => {
 
     // console.log(itemCards);
 
+    const dispatch = useDispatch();
+
+    addFoodItem = (item) => {
+        dispatch(additem(item));
+    }
+
+    clearFoodItem= (item) => {
+        dispatch(removeitem(item));
+    }
+
     return !restaurant ? (
         <Shimmer/>
     ) : (
@@ -40,6 +52,7 @@ const RestaurantMenu = () => {
                         <h3 className="font-semibold text-xl mt-3">Rating :{avgRating} stars</h3>
                         <h3 className="mt-3 italic font-semibold">{costForTwoMessage}</h3>
                     </div>
+                    
             </div>
             
             <div >
@@ -49,6 +62,8 @@ const RestaurantMenu = () => {
                     <li className="font-bold" key={item.card.info.id}>
                     {item.card.info.name} -{" Rs."}
                      {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
+                     <button className="p-2 m-1 bg-green-200" onClick={()=> addFoodItem(item)}>Add Item</button>
+                     <button className="p-2 m-1 bg-green-200" onClick={()=> clearFoodItem(item)}>Remove Item</button>
                     </li>
                      ))}
                     
