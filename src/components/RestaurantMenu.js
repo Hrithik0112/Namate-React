@@ -36,10 +36,11 @@ const RestaurantMenu = () => {
   //       ?.card?.card ?? "";
 
   // console.log(itemCards);
+  if (restaurant.length === 0) {
+    return <Shimmer />;
+  }
 
-  return !restaurant ? (
-    <Shimmer />
-  ) : (
+  return (
     <div>
       <div className="flex">
         {/* <h1>Restraunt id: {resId}</h1> */}

@@ -1,61 +1,63 @@
-import { render } from "@testing-library/react"
-import Header from "../Header"
+import { render } from "@testing-library/react";
+import Header from "../Header";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom/server";
 import store from "../../utils/store";
 
-test("logo should render on loading of header", () => { 
-    //load header
-    
+test("logo should render on loading of header", () => {
+  //load header
 
-    const header = render(
-        <StaticRouter>
-          <Provider store={store}>
-            <Header />
-          </Provider>
-        </StaticRouter>
-      );
+  const header = render(
+    <StaticRouter>
+      <Provider store={store}>
+        <Header />
+      </Provider>
+    </StaticRouter>
+  );
 
-    const logo = header.getAllByTestId("logo");
+  const logo =
+    header.getAllByTestId("logo");
 
-    expect(logo[0].src).toBe("http://localhost/dummy.png");
+  expect(logo[0].src).toBe(
+    "http://localhost/dummy.png"
+  );
 
-
-    //cheack logo is loaded
-})
-
-test("inline status logo should render on loading of header", () => { 
-    //load header
-    
-
-    const header = render(
-        <StaticRouter>
-          <Provider store={store}>
-            <Header />
-          </Provider>
-        </StaticRouter>
-      );
-
-    const onlineStatus = header.getByTestId("online-status");
-
-    expect(onlineStatus.innerHTML).toBe("✅");
-
+  //cheack logo is loaded
 });
 
-test("cart should have 0 item on render of loading of header", () => { 
-    //load header
-    
+test("isonline status logo should render on loading of header", () => {
+  //load header
 
-    const header = render(
-        <StaticRouter>
-          <Provider store={store}>
-            <Header />
-          </Provider>
-        </StaticRouter>
-      );
+  const header = render(
+    <StaticRouter>
+      <Provider store={store}>
+        <Header />
+      </Provider>
+    </StaticRouter>
+  );
 
-    const cart = header.getByTestId("cart");
+  const onlineStatus =
+    header.getByTestId("online-status");
 
-    expect(cart.innerHTML).toBe("cart -0-items");
+  expect(onlineStatus.innerHTML).toBe(
+    "✅"
+  );
+});
 
+test("cart should have 0 item on render of loading of header", () => {
+  //load header
+
+  const header = render(
+    <StaticRouter>
+      <Provider store={store}>
+        <Header />
+      </Provider>
+    </StaticRouter>
+  );
+
+  const cart = header.getByTestId(
+    "cart-items"
+  );
+
+  expect(cart.innerHTML).toBe(" - 0");
 });
