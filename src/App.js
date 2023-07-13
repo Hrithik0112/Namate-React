@@ -49,15 +49,15 @@ const Applayout = () => {
             <UserContext.Provider value={{
                 profile : profile,
                 setProfile :setProfile
-            }}>
-
+                }}>
                 <Header/>
                 <Outlet/>
                 <Footer/>
             </UserContext.Provider>
-
-
         </Provider>
+
+
+
     )
 }
 

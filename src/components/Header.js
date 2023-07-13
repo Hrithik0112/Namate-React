@@ -4,6 +4,7 @@ import { useContext } from "react";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 import store from "../utils/store";
+import Logo from "../assets/img/Logo.png"
 
 
 
@@ -11,9 +12,7 @@ const Title = () => (
 
     <a href="/">
         <img
-            className="w-32 ml-10"
-            alt="logo"
-            src="https://orkfriend.com/wp-content/uploads/2023/03/Zwigato-Movie-Logo-PNG-794x420.png"
+            className="w-32 ml-10" data-testid="logo" alt="logo" src={Logo}
         />
     </a>
     
@@ -25,7 +24,7 @@ const Header = () => {
 
     const {profile} = useContext(UserContext);
 
-    const cartItems = useSelector(store => store.cart.items);
+    const cartItems = useSelector((store) => store.cart.items);
     // console.log(cartItems);
 
 
@@ -39,9 +38,9 @@ const Header = () => {
                 <li className="px-2"> <Link to="/about">about</Link> </li>
                 <li className="px-2"><Link to="/contact">Contact</Link></li>
                 <li className="px-2"><Link to="/instamart">Instamart</Link></li>
-                <li className="px-2"><Link to="/cart">cart -{cartItems.length}-items</Link></li>
+                <Link to="/cart"><li className="px-2" data-testid="cart">cart -{cartItems.length}-items</li></Link>
             </ul>
-            <h1>{isOnline ? "✅" : "🔴"}</h1>
+            <h1 data-testid="online-status">{isOnline ? "✅" : "🔴"}</h1>
             
             </div>
         </div>
